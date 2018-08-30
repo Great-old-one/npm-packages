@@ -1,0 +1,27 @@
+{
+  "name": "bx-wxapp-webpack-plugin",
+  "version": "1.0.1",
+  "description": "在微信小程序使用webpack时生成app.js,挂载所有公共js文件",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "lib/"
+  ],
+  "semistandard": {
+    "ignore": [
+      "examples/*/dist/**/*.*"
+    ]
+  },
+  "peerDependencies": {
+    "webpack": "^1.0.0 || ^2.0.0 || ^3.0.0 || ^4.0.0"
+  },
+  "scripts": {},
+  "author": "great_old_ones",
+  "license": "MIT",
+  "devDependencies": {
+    "lodash": "^4.17.10"
+  },
+  "dependencies": {
+    "toposort": "^2.0.2"
+  }
+}
