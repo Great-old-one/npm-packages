@@ -1,11 +1,13 @@
 import {writeFile} from "./writeFile";
 
+
 const _ = require("lodash")
 import {preAllfilesName} from "./preAllfilesName"
 import readAllFiles from "./readAllFiles"
 
 const path = require("path")
-module.exports = class WxAppNpmPlugin {
+
+class WxAppNpmPlugin {
     constructor(options = {}) {
         this.options = _.merge({
             // package source
@@ -27,41 +29,63 @@ module.exports = class WxAppNpmPlugin {
         } else {
             context = options.context;
         }
+        let allPackages = []
+
         compiler.plugin('emit', (compilation, callback) => {
             //outPut path
-            const distContext = compilation.options.output.path
-            const fileNames = compilation.assets
-            //read all json assets,and get packages from usingComponent
+            //map count
+            let count = 0
+            const emit = async (globConfig = {}) => {
+                count++
+                const {compilation, notCreateRelative} = globConfig
+                const fileNames = compilation.assets
+                globConfig.count = count
+                //read all json assets,and get packages from usingComponent
+                packages = await preAllfilesName(fileNames, globConfig)
 
-
-            const globConfig = {
-                baseFromPath: path.relative(context, this.options.from),
-                compilation,
-                distContext,
-                to: this.options.to
-            }
-            packages = preAllfilesName(fileNames, globConfig)
-            //read all sourceFile
-            const tasks = []
-            packages.forEach((item) => {
-                const {from} = this.options
-                const basePath = path.resolve(context, from)
-                tasks.push(readAllFiles(basePath, item))
-            })
-
-            //write all files
-            Promise.all(tasks).then((files) => {
+                //stop generate
+                if (count > 1 && notCreateRelative) {
+                    return true
+                }
+                if (!packages || packages.length === 0) {
+                    return true
+                }
+                //read all sourceFile
+                const tasks = []
+                packages.forEach((item) => {
+                    if (allPackages.includes(item)) {
+                        return
+                    }
+                    allPackages.push(item)
+                    const {from} = this.options
+                    const basePath = path.resolve(context, from)
+                    tasks.push(readAllFiles(basePath, item))
+                })
+                const files = await Promise.all(tasks)
                 const fileList = _.flatten(files)
                 const writeTasks = []
                 fileList.forEach((file) => {
                     writeTasks.push(writeFile(file, globConfig))
                 })
-                return Promise.all(writeTasks)
-            }).then(() => {
+                await Promise.all(writeTasks)
+                //handle a package invoke anther package
+                return emit(globConfig)
+            }
+            const distContext = compilation.options.output.path
+            const globConfig = {
+                baseFromPath: path.relative(context, this.options.from),
+                compilation,
+                distContext,
+                to: this.options.to,
+                notCreateRelative: this.options.notCreateRelative
+            }
+            emit(globConfig).then(() => {
                 callback()
             }).catch((err) => {
-                console.error(err)
+                console.log(err)
             })
         });
     };
 }
+
+module.exports = WxAppNpmPlugin

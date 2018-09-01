@@ -1,7 +1,9 @@
+const path = require("path")
+
 export function writeFile(file, options) {
     const {filePath, dirname, absolutePath} = file
     const {compilation, to} = options
-    const toPath = to + "/" + dirname + "/" + filePath.replace(/\\/g, '/')
+    const toPath = path.join(to, dirname, filePath.replace(/\\/g, '/'))
     return new Promise((resolve, reject) => {
         compilation.inputFileSystem.stat(absolutePath, (err, stat) => {
             if (err) {
@@ -17,6 +19,7 @@ export function writeFile(file, options) {
                     reject(err)
                     return
                 }
+
                 compilation.assets[toPath] = {
                     size: function () {
                         return content.size;

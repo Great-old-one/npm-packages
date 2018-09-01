@@ -4,6 +4,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.writeFile = writeFile;
+var path = require("path");
+
 function writeFile(file, options) {
     var filePath = file.filePath,
         dirname = file.dirname,
@@ -11,7 +13,7 @@ function writeFile(file, options) {
     var compilation = options.compilation,
         to = options.to;
 
-    var toPath = to + "/" + dirname + "/" + filePath.replace(/\\/g, '/');
+    var toPath = path.join(to, dirname, filePath.replace(/\\/g, '/'));
     return new Promise(function (resolve, reject) {
         compilation.inputFileSystem.stat(absolutePath, function (err, stat) {
             if (err) {
@@ -27,6 +29,7 @@ function writeFile(file, options) {
                     reject(err);
                     return;
                 }
+
                 compilation.assets[toPath] = {
                     size: function size() {
                         return content.size;

@@ -4,10 +4,6 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _writeFile = require("./writeFile");
 
-var _getMiniDir = require("./utils/getMiniDir");
-
-var _getMiniDir2 = _interopRequireDefault(_getMiniDir);
-
 var _preAllfilesName = require("./preAllfilesName");
 
 var _readAllFiles = require("./readAllFiles");
@@ -22,7 +18,8 @@ var _ = require("lodash");
 
 
 var path = require("path");
-module.exports = function () {
+
+var WxAppNpmPlugin = function () {
     function WxAppNpmPlugin() {
         var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
@@ -52,41 +49,65 @@ module.exports = function () {
             } else {
                 context = options.context;
             }
+            var allPackages = [];
+
             compiler.plugin('emit', function (compilation, callback) {
                 //outPut path
-                var distContext = compilation.options.output.path;
-                var fileNames = compilation.assets;
-                //read all json assets,and get packages from usingComponent
+                //map count
+                var count = 0;
+                var emit = async function emit() {
+                    var globConfig = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
+                    count++;
+                    var compilation = globConfig.compilation,
+                        notCreateRelative = globConfig.notCreateRelative;
 
-                var globConfig = {
-                    baseFromPath: path.relative(context, _this.options.from),
-                    compilation: compilation,
-                    distContext: distContext,
-                    to: _this.options.to
-                };
-                packages = (0, _preAllfilesName.preAllfilesName)(fileNames, globConfig);
-                //read all sourceFile
-                var tasks = [];
-                packages.forEach(function (item) {
-                    var from = _this.options.from;
+                    var fileNames = compilation.assets;
+                    globConfig.count = count;
+                    //read all json assets,and get packages from usingComponent
+                    packages = await (0, _preAllfilesName.preAllfilesName)(fileNames, globConfig);
 
-                    var basePath = path.resolve(context, from);
-                    tasks.push((0, _readAllFiles2.default)(basePath, item));
-                });
+                    //stop generate
+                    if (count > 1 && notCreateRelative) {
+                        return true;
+                    }
+                    if (!packages || packages.length === 0) {
+                        return true;
+                    }
+                    //read all sourceFile
+                    var tasks = [];
+                    packages.forEach(function (item) {
+                        if (allPackages.includes(item)) {
+                            return;
+                        }
+                        allPackages.push(item);
+                        var from = _this.options.from;
 
-                //write all files
-                Promise.all(tasks).then(function (files) {
+                        var basePath = path.resolve(context, from);
+                        tasks.push((0, _readAllFiles2.default)(basePath, item));
+                    });
+                    var files = await Promise.all(tasks);
                     var fileList = _.flatten(files);
                     var writeTasks = [];
                     fileList.forEach(function (file) {
                         writeTasks.push((0, _writeFile.writeFile)(file, globConfig));
                     });
-                    return Promise.all(writeTasks);
-                }).then(function () {
+                    await Promise.all(writeTasks);
+                    //handle a package invoke anther package
+                    return emit(globConfig);
+                };
+                var distContext = compilation.options.output.path;
+                var globConfig = {
+                    baseFromPath: path.relative(context, _this.options.from),
+                    compilation: compilation,
+                    distContext: distContext,
+                    to: _this.options.to,
+                    notCreateRelative: _this.options.notCreateRelative
+                };
+                emit(globConfig).then(function () {
                     callback();
                 }).catch(function (err) {
-                    console.error(err);
+                    console.log(err);
                 });
             });
         }
@@ -94,3 +115,5 @@ module.exports = function () {
 
     return WxAppNpmPlugin;
 }();
+
+module.exports = WxAppNpmPlugin;

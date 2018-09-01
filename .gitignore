@@ -1,3 +1,4 @@
-bx-wxapp-npm-plugin/node_modules/
-bx-wxapp-ts-decorator/
-bx-wxapp-webpack-plugin/
+/bx-wxapp-npm-plugin/node_modules/
+/bx-wxapp-ts-decorator/node_modules
+/bx-wxapp-webpack-plugin/node_modules
+/.idea

@@ -1,63 +1,88 @@
-import getMiniDir from "./utils/getMiniDir";
+import chalk from "chalk"
 
 const path = require("path")
 import _ from "lodash"
-import isFile from "./utils/isFile"
+import getMiniDir from "./utils/getMiniDir";
+import {isJsonFile, isPackage, isDir} from "./utils/checkFileType"
 
-function isPackage(str) {
-    const pathPattern = /^(\.|\/)/
-    return pathPattern.test(str)
-}
-
-function isJsonFile(filename) {
-    const pattern = /\.json$/
-    return pattern.test(filename)
-}
-
-function getDepedences(file, options) {
-    let packages = []
+async function getDepedences(file, options, packages) {
     var source = file.source();
-    const jsonSource = JSON.parse(source)
-    const content = jsonSource.usingComponents
-    if (content) {
-        Object.keys(content).forEach((item, index) => {
-            if (!isPackage(content[item].charAt(0))) {
-                const sourceDirname = content[item].split("/")[0]
-                packages.push(sourceDirname)
-                setRelation(jsonSource, _.merge({}, options, {packageName: item}))
-            }
-        })
+    let content
+    let jsonSource
+    try {
+        jsonSource = JSON.parse(source)
+        content = jsonSource.usingComponents
+    } catch (e) {
+        console.log(chalk.red(e))
     }
-    return packages
+    if (!content) {
+        return
+    }
+    const tasks = []
+
+    Object.keys(content).forEach((item, index) => {
+        if (!isPackage(content[item].charAt(0))) {
+            const sourceDirname = content[item].split("/")[0]
+            packages.push(sourceDirname)
+            const allOptions = _.merge({}, options, {packageName: item})
+            tasks.push(setRelation(jsonSource, allOptions))
+        }
+    })
+    await Promise.all(tasks)
 }
 
 
 //create relativePath
 function setRelation(source, options) {
-    const {to, compilation, notCreateRelative, filename, packageName, baseFromPath} = options
-    if (!notCreateRelative) {
+    return new Promise((resolve, reject) => {
+        const {
+            to,
+            compilation,
+            notCreateRelative,
+            filename,
+            packageName,
+            baseFromPath,
+            count,
+            distContext
+        } = options
+        if (notCreateRelative) {
+            resolve()
+            return
+        }
         const content = source.usingComponents
-        const relativePath = path.relative(filename, to)
+        let absoluteFilePath = path.join(distContext, filename)
+        let absoluteTargetPath = path.join(distContext, to)
+        // is not first map, It is present npm package
+        if (count > 1) {
+            //hack,  because  filename is also a npm package and also under in miniprogram_npm
+            absoluteFilePath = path.resolve(absoluteFilePath, "..")
+        }
+        let relativePath = path.relative(absoluteFilePath, absoluteTargetPath)
+
         const sourcePath = getSourcePath({baseFromPath, packagePath: content[packageName]})
-        isFile(compilation.inputFileSystem, sourcePath).then((flag) => {
-            let relationPath = path.join(relativePath, content[packageName])
-            if (!flag) {
-                relationPath = path.join(relativePath, content[packageName], "index")
-            }
-            content[packageName] = relationPath
-            const newContent = JSON.stringify(_.assign({}, source, {usingComponents: content}))
-            compilation.assets[filename] = {
-                source() {
-                    return newContent
-                },
-                size() {
-                    return newContent.length
+        isDir(compilation.inputFileSystem, sourcePath)
+            .then((flag) => {
+                let relationPath = path.join(relativePath, content[packageName])
+                if (flag) {
+                    relationPath = path.join(relationPath, "index")
                 }
-            }
-        }).catch((err) => {
-            console.error(err)
+                content[packageName] = relationPath
+                const newContent = JSON.stringify(_.assign({}, source, {usingComponents: content}))
+                compilation.assets[filename] = {
+                    source() {
+                        return newContent
+                    },
+                    size() {
+                        return newContent.length
+                    }
+                }
+                resolve()
+            }).catch((err) => {
+            reject(err)
+            console.log(chalk.red(err))
         })
-    }
+    })
+
 }
 
 function getSourcePath(options) {
@@ -68,16 +93,19 @@ function getSourcePath(options) {
     return path.resolve(dirname, miniDir, packageNames.slice(1).join("/"))
 }
 
-export function preAllfilesName(fileNames, globConfig) {
-    let packages = []
+export async function preAllfilesName(fileNames, globConfig) {
+    const packages = []
+    const tasks = []
     for (let key in fileNames) {
         if (fileNames.hasOwnProperty(key) && isJsonFile(key)) {
-
             const options = _.merge({}, globConfig, {filename: key})
-            packages = packages.concat(getDepedences(fileNames[key], options))
+            tasks.push(getDepedences(fileNames[key], options, packages))
         }
     }
-
+    await Promise.all(tasks)
     return [...new Set(packages)]
 }
+
+
+
 

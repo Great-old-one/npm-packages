@@ -9,6 +9,7 @@ exports.default = function (fs, filePath) {
         (0, _promisify.stat)(fs, filePath).then(function (stats) {
             resolve(stats.isFile());
         }).catch(function () {
+            console.log("hello");
             var newPath = filePath + ".js";
             return (0, _promisify.stat)(fs, newPath);
         }).then(function (stats) {
