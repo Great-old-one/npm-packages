@@ -1,7 +1,7 @@
 {
   "name": "bx-wxapp-npm-plugin",
   "version": "1.0.1",
-  "description": "生成微信小程序专用包的webpack插件",
+  "description": "一个管理微信小程序NPM包的webpack插件",
   "main": "./dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,8 +9,7 @@
   },
   "author": "",
   "license": "MIT",
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "dependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
