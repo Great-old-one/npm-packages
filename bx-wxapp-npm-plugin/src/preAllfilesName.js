@@ -6,7 +6,7 @@ import getMiniDir from "./utils/getMiniDir";
 import {isJsonFile, isPackage, isDir} from "./utils/checkFileType"
 
 async function getDepedences(file, options, packages) {
-    var source = file.source();
+    const source = file.source();
     let content
     let jsonSource
     try {
@@ -50,15 +50,9 @@ function setRelation(source, options) {
             return
         }
         const content = source.usingComponents
-        let absoluteFilePath = path.join(distContext, filename)
-        let absoluteTargetPath = path.join(distContext, to)
-        // is not first map, It is present npm package
-        if (count > 1) {
-            //hack,  because  filename is also a npm package and also under in miniprogram_npm
-            absoluteFilePath = path.resolve(absoluteFilePath, "..")
-        }
-        let relativePath = path.relative(absoluteFilePath, absoluteTargetPath)
-
+        let absoluteFilePath = path.resolve(distContext, filename)
+        let absoluteTargetPath = path.resolve(distContext, to)
+        let relativePath = path.relative(path.dirname(absoluteFilePath), absoluteTargetPath)
         const sourcePath = getSourcePath({baseFromPath, packagePath: content[packageName]})
         isDir(compilation.inputFileSystem, sourcePath)
             .then((flag) => {

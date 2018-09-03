@@ -1,6 +1,5 @@
 import {writeFile} from "./writeFile";
 
-
 const _ = require("lodash")
 import {preAllfilesName} from "./preAllfilesName"
 import readAllFiles from "./readAllFiles"

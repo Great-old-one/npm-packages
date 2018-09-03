@@ -1,6 +1,6 @@
 {
   "name": "bx-wxapp-npm-plugin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "一个管理微信小程序NPM包的webpack插件",
   "main": "./dist/index.js",
   "scripts": {

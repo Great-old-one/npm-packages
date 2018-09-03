@@ -69,15 +69,9 @@ function setRelation(source, options) {
             return;
         }
         var content = source.usingComponents;
-        var absoluteFilePath = path.join(distContext, filename);
-        var absoluteTargetPath = path.join(distContext, to);
-        // is not first map, It is present npm package
-        if (count > 1) {
-            //hack,  because  filename is also a npm package and also under in miniprogram_npm
-            absoluteFilePath = path.resolve(absoluteFilePath, "..");
-        }
-        var relativePath = path.relative(absoluteFilePath, absoluteTargetPath);
-
+        var absoluteFilePath = path.resolve(distContext, filename);
+        var absoluteTargetPath = path.resolve(distContext, to);
+        var relativePath = path.relative(path.dirname(absoluteFilePath), absoluteTargetPath);
         var sourcePath = getSourcePath({ baseFromPath: baseFromPath, packagePath: content[packageName] });
         (0, _checkFileType.isDir)(compilation.inputFileSystem, sourcePath).then(function (flag) {
             var relationPath = path.join(relativePath, content[packageName]);

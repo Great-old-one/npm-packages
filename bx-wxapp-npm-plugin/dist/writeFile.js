@@ -29,7 +29,6 @@ function writeFile(file, options) {
                     reject(err);
                     return;
                 }
-
                 compilation.assets[toPath] = {
                     size: function size() {
                         return content.size;
