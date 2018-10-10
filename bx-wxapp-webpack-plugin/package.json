@@ -1,6 +1,6 @@
 {
   "name": "bx-wxapp-webpack-plugin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "在微信小程序使用webpack时生成app.js,挂载所有公共js文件",
   "main": "index.js",
   "files": [
