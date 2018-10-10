@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="abdd4458-0229-4918-87d4-8714c74d1240" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bx-wxapp-npm-plugin/dist/preAllfilesName.js" beforeDir="false" afterPath="$PROJECT_DIR$/bx-wxapp-npm-plugin/dist/preAllfilesName.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bx-wxapp-npm-plugin/dist/writeFile.js" beforeDir="false" afterPath="$PROJECT_DIR$/bx-wxapp-npm-plugin/dist/writeFile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bx-wxapp-npm-plugin/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/bx-wxapp-npm-plugin/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bx-wxapp-npm-plugin/src/preAllfilesName.js" beforeDir="false" afterPath="$PROJECT_DIR$/bx-wxapp-npm-plugin/src/preAllfilesName.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bx-wxapp-npm-plugin/src/writeFile.js" beforeDir="false" afterPath="$PROJECT_DIR$/bx-wxapp-npm-plugin/src/writeFile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bx-wxapp-webpack-plugin/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/bx-wxapp-webpack-plugin/package-lock.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,20 +15,20 @@
     <session id="-478741649">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="10" />
+          <entry key="project.closed" value="12" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.1" value="6" />
+          <entry key="project.open.time.1" value="8" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.17" value="1" />
           <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="12" />
+          <entry key="project.opened" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
         <counts>
-          <entry key="TypeScriptServerServiceImpl" value="11" />
+          <entry key="TypeScriptServerServiceImpl" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -40,8 +36,8 @@
           <entry key="babelrc" value="2" />
           <entry key="gitignore" value="2" />
           <entry key="index" value="1" />
-          <entry key="js" value="124" />
-          <entry key="json" value="32" />
+          <entry key="js" value="127" />
+          <entry key="json" value="35" />
           <entry key="ts" value="12" />
           <entry key="wxml" value="1" />
         </counts>
@@ -49,8 +45,8 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="HTML" value="1" />
-          <entry key="JSON" value="28" />
-          <entry key="JavaScript" value="124" />
+          <entry key="JSON" value="31" />
+          <entry key="JavaScript" value="127" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="TypeScript" value="13" />
           <entry key="tsconfig" value="6" />
@@ -60,13 +56,13 @@
         <counts>
           <entry key="gitignore" value="18" />
           <entry key="js" value="11321" />
-          <entry key="json" value="356" />
+          <entry key="json" value="357" />
           <entry key="ts" value="287" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JSON" value="309" />
+          <entry key="JSON" value="310" />
           <entry key="JavaScript" value="11321" />
           <entry key="PLAIN_TEXT" value="18" />
           <entry key="TypeScript" value="287" />
@@ -80,8 +76,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bx-wxapp-npm-plugin/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="861">
-              <caret line="41" column="17" lean-forward="true" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
+            <state relative-caret-position="-181">
+              <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
               <folding>
                 <element signature="e#68#117#0" expanded="true" />
               </folding>
@@ -90,15 +86,35 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bx-wxapp-npm-plugin/src/preAllfilesName.js">
+        <entry file="file://$PROJECT_DIR$/bx-wxapp-webpack-plugin/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="63" column="43" selection-start-line="63" selection-start-column="43" selection-end-line="63" selection-end-column="43" />
-              <folding>
-                <element signature="e#55#77#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-667">
+              <caret line="29" column="30" lean-forward="true" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bx-wxapp-npm-plugin/src/preAllfilesName.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1276">
+              <caret line="60" column="42" selection-start-line="60" selection-start-column="42" selection-end-line="60" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bx-wxapp-webpack-plugin/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="13" column="4" lean-forward="true" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bx-wxapp-webpack-plugin/package-lock.json">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -163,11 +179,11 @@
         <option value="$PROJECT_DIR$/bx-wxapp-npm-plugin/src/utils/isDir.js" />
         <option value="$PROJECT_DIR$/bx-wxapp-npm-plugin/src/utils/checkFileType.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/bx-wxapp-npm-plugin/package.json" />
         <option value="$PROJECT_DIR$/bx-wxapp-npm-plugin/src/writeFile.js" />
         <option value="$PROJECT_DIR$/bx-wxapp-npm-plugin/src/readAllFiles.js" />
         <option value="$PROJECT_DIR$/bx-wxapp-npm-plugin/src/index.js" />
         <option value="$PROJECT_DIR$/bx-wxapp-npm-plugin/src/preAllfilesName.js" />
+        <option value="$PROJECT_DIR$/bx-wxapp-npm-plugin/package.json" />
       </list>
     </option>
   </component>
@@ -185,11 +201,14 @@
   </component>
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/bx-wxapp-npm-plugin/node_modules" />
+    <handled-path value="$PROJECT_DIR$/bx-wxapp-webpack-plugin/node_modules" />
   </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths>
       <path value="$PROJECT_DIR$/bx-wxapp-npm-plugin/package.json" />
       <path value="$PROJECT_DIR$/bx-wxapp-ts-decorator/package.json" />
+      <path value="$PROJECT_DIR$/bx-wxapp-webpack-plugin/node_modules/lodash/package.json" />
+      <path value="$PROJECT_DIR$/bx-wxapp-webpack-plugin/node_modules/toposort/package.json" />
       <path value="$PROJECT_DIR$/bx-wxapp-webpack-plugin/package.json" />
     </packageJsonPaths>
   </component>
@@ -204,9 +223,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -214,16 +230,35 @@
               <item name="npm-pakeages" type="b2602c69:ProjectViewProjectNode" />
               <item name="npm-pakeages" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="npm-pakeages" type="b2602c69:ProjectViewProjectNode" />
+              <item name="npm-pakeages" type="462c0819:PsiDirectoryNode" />
+              <item name="bx-wxapp-npm-plugin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="npm-pakeages" type="b2602c69:ProjectViewProjectNode" />
+              <item name="npm-pakeages" type="462c0819:PsiDirectoryNode" />
+              <item name="bx-wxapp-npm-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="npm-pakeages" type="b2602c69:ProjectViewProjectNode" />
+              <item name="npm-pakeages" type="462c0819:PsiDirectoryNode" />
+              <item name="bx-wxapp-webpack-plugin" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535958511514" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539169221568" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.1.0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -290,24 +325,27 @@
       <workItem from="1535854771180" duration="266000" />
       <workItem from="1535895734697" duration="74000" />
       <workItem from="1535941076556" duration="709000" />
-      <workItem from="1535946459744" duration="6958000" />
+      <workItem from="1535946459744" duration="7348000" />
+      <workItem from="1535965804566" duration="718000" />
+      <workItem from="1539159587030" duration="1517000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="113316000" />
+    <option name="totallyTimeSpent" value="115941000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28898427" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29756796" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32891566" />
@@ -320,6 +358,7 @@
       <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="right" id="SciView" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -376,13 +415,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bx-wxapp-webpack-plugin/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="4" lean-forward="true" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bx-wxapp-npm-plugin/src/preProcessPattern.js" />
     <entry file="file://$PROJECT_DIR$/bx-wxapp-npm-plugin/src/processPattern.js" />
     <entry file="file://$PROJECT_DIR$/bx-wxapp-ts-decorator/package.json">
@@ -408,13 +440,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bx-wxapp-npm-plugin/src/utils/escape.js" />
     <entry file="file://$PROJECT_DIR$/bx-wxapp-npm-plugin/src/utils/isObject.js" />
-    <entry file="file://$PROJECT_DIR$/bx-wxapp-webpack-plugin/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-455">
-          <caret line="29" column="30" lean-forward="true" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bx-wxapp-npm-plugin/src/utils/isDir.js" />
     <entry file="file://$PROJECT_DIR$/bx-wxapp-npm-plugin/src/utils/checkFileType.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -445,13 +470,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bx-wxapp-npm-plugin/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bx-wxapp-npm-plugin/dist/index.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -479,20 +497,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bx-wxapp-npm-plugin/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bx-wxapp-webpack-plugin/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bx-wxapp-webpack-plugin/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="4" lean-forward="true" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bx-wxapp-webpack-plugin/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-667">
+          <caret line="29" column="30" lean-forward="true" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/bx-wxapp-npm-plugin/src/preAllfilesName.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="63" column="43" selection-start-line="63" selection-start-column="43" selection-end-line="63" selection-end-column="43" />
-          <folding>
-            <element signature="e#55#77#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="1276">
+          <caret line="60" column="42" selection-start-line="60" selection-start-column="42" selection-end-line="60" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bx-wxapp-npm-plugin/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="861">
-          <caret line="41" column="17" lean-forward="true" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
+        <state relative-caret-position="-181">
+          <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
           <folding>
             <element signature="e#68#117#0" expanded="true" />
           </folding>

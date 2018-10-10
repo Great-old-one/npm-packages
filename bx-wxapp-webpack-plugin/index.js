@@ -13,6 +13,7 @@ class WxappWebpackPlugin {
     }
 
     apply(compiler) {
+
         compiler.hooks.emit.tapAsync("WxappWebpackPlugin", (compilation, callback) => {
             const chunkOnlyConfig = {
                 assets: false,
@@ -39,16 +40,35 @@ class WxappWebpackPlugin {
                     return true
                 }
             })
+
             // Sort chunks
             chunks = this.sortChunks(chunks, this.options.chunksSortMode, compilation);
+
+            //copy app.js to main.js
+            const mainFile = compilation.assets["app.js"]
+            if (!mainFile) {
+                throw new Error("请指定app.js文件")
+            }
+            const appContent = compilation.assets["app.js"].source()
+            const indexContent = "require('./main.js');"
+
+            compilation.assets["main.js"]= {
+                source(){
+                    return appContent
+                },
+                size(){
+                    return appContent.length
+                }
+            }
 
             //generate content
             const sourceContent = chunks.reduce((content, chunk) => {
                 const chunkName = chunk.names[0]
-                content += "require('./" + chunkName + "');"
+                if (chunkName !== "app") {
+                    content += "require('./" + chunkName + "');"
+                }
                 return content
-            }, "")
-
+            }, "") + indexContent
             //write content
             compilation.assets[this.options.filename] = {
                 source() {
