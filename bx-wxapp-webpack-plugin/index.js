@@ -9,7 +9,7 @@ class WxappWebpackPlugin {
             chunks: 'all',
             excludeChunks: [],
             chunksSortMode: 'auto',
-            entryFileName:"appEntryFile",//复制app.js的文件名
+            entryFileName:"appEntryFile.js",//复制app.js的文件名
         }, options)
     }
 
