@@ -5,10 +5,11 @@ const chunkSorter = require('./lib/chunksorter.js');
 class WxappWebpackPlugin {
     constructor(options) {
         this.options = _.extend({
-            filename: "index.js",
+            filename: "app.js",
             chunks: 'all',
             excludeChunks: [],
             chunksSortMode: 'auto',
+            entryFileName:"appEntryFile",//复制app.js的文件名
         }, options)
     }
 
@@ -50,9 +51,9 @@ class WxappWebpackPlugin {
                 throw new Error("请指定app.js文件")
             }
             const appContent = compilation.assets["app.js"].source()
-            const indexContent = "require('./main.js');"
+            const indexContent = `require('${this.options.entryFileName}');`
 
-            compilation.assets["main.js"]= {
+            compilation.assets[this.options.entryFileName]= {
                 source(){
                     return appContent
                 },
