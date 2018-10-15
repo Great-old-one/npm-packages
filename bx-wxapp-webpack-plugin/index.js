@@ -51,7 +51,7 @@ class WxappWebpackPlugin {
                 throw new Error("请指定app.js文件")
             }
             const appContent = compilation.assets["app.js"].source()
-            const indexContent = `require('${this.options.entryFileName}');`
+            const indexContent = `require('./${this.options.entryFileName}');`
 
             compilation.assets[this.options.entryFileName]= {
                 source(){
